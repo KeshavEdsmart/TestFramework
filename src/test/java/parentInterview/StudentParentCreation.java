@@ -81,8 +81,7 @@ public class StudentParentCreation {
 		
 		
 		System.out.println("Complete");	
-		System.out.println("print");
-		System.out.println("first");
+		
 		
 		
 		
