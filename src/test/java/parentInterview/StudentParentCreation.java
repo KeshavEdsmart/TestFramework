@@ -75,8 +75,8 @@ public class StudentParentCreation {
 //			Thread.sleep(4000);
 //
 //			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"btnSearch\"]/span"))).click();
-//
 //			Thread.sleep(4000);
+//			
 //			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"page-content-wrapper\"]/div/div/div[4]/div[1]/a"))).click();
 //			Thread.sleep(4000);
 //
@@ -84,44 +84,86 @@ public class StudentParentCreation {
 //			driver.findElement(By.id("participantLastName")).sendKeys(StudentLname);
 //			driver.findElement(By.id("schoolStudentId")).sendKeys(StudentID + i);
 //			Thread.sleep(4000);
+//			
 //			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnAddNewObject"))).click();
 //			Thread.sleep(4000);
 //			
 //			System.out.println(i);
 //		}
+//		
+//		
+//		
+//		// Create Parents
+//		
+//		Thread.sleep(4000);
+//		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"sidebar-wrapper\"]/ul/li[13]/a/span[2]"))).click();
+//		Thread.sleep(4000);
+//		
+//		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("sText"))).sendKeys("s");
+//		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"btnSearch\"]/span"))).click();
+//		Thread.sleep(4000);
+//		
+//		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"page-content-wrapper\"]/div/div/div[3]/div[1]/a"))).click();
+//		Thread.sleep(4000);
+//		
+//		for(int i = 71; i < 201; i++) {
+//			
+//			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("contactFirstName"))).sendKeys(ContactFname + i);
+//			driver.findElement(By.id("contactLastName")).sendKeys(ContactLname);
+//			driver.findElement(By.id("contactEmail")).sendKeys(ContactFname + i + "@seleniumtest.com");
+//			Thread.sleep(4000);
+//			
+//			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnAddNewObject"))).click();
+//			Thread.sleep(4000);
+//			
+//			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnAddNew"))).click();
+//			Thread.sleep(4000);
+//			
+//			System.out.println(i);
+//			
+//		}
 		
 		
+		//assign Parents to Students
 		
-		// Create Parents
-		
-		Thread.sleep(4000);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"sidebar-wrapper\"]/ul/li[13]/a/span[2]"))).click();
-		Thread.sleep(4000);
-		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("sText"))).sendKeys("s");
-		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"btnSearch\"]/span"))).click();
-		Thread.sleep(4000);
-		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"page-content-wrapper\"]/div/div/div[3]/div[1]/a"))).click();
-		Thread.sleep(4000);
-		
-		for(int i = 71; i < 201; i++) {
+		for (int i = 43; i < 201; i ++) {
 			
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("contactFirstName"))).sendKeys(ContactFname + i);
+			try {
+				
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"sidebar-wrapper\"]/ul/li[12]/a/span[2]"))).click();
+				Thread.sleep(2000);
+
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("sText"))).sendKeys(StudentFname + i);			
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"btnSearch\"]/span"))).click();
+				Thread.sleep(2000);
 			
-			driver.findElement(By.id("contactLastName")).sendKeys(ContactLname);
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"listData-list\"]/tbody/tr[1]/td[7]/button/span"))).click();
+				Thread.sleep(2000);
 			
-			driver.findElement(By.id("contactEmail")).sendKeys(ContactFname + i + "@seleniumtest.com");
-			Thread.sleep(4000);
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("aContacts"))).click();
+				Thread.sleep(2000);
+
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnAddContactForStudent"))).click();			
+				Thread.sleep(2000);
 			
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnAddNewObject"))).click();
-			Thread.sleep(4000);
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("contacts"))).sendKeys(ContactFname + i);
+				Thread.sleep(2000);
 			
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnAddNew"))).click();
-			Thread.sleep(4000);
+				driver.findElement(By.id("contacts")).click();
+				Thread.sleep(2000);
 			
-			System.out.println(i);
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"contactModal\"]//div[2]/span//div[2]"))).click();
+				Thread.sleep(1000);
+				
+				System.out.println(i);
+			
+			}catch(Exception e) {
+				
+				System.out.println("retrying with 1 less value of i");
+				i--;
+				
+			}
+			
 			
 		}
 		
